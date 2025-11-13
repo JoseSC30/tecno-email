@@ -6,12 +6,16 @@ public class ProcesadorComandos {
     private final ControladorComida controladorComida;
     private final ControladorRol controladorRol;
     private final ControladorUsuario controladorUsuario;
+    private final ControladorCategoria controladorCategoria;
+    private final ControladorMenu controladorMenu;
     
     public ProcesadorComandos() {
         this.controladorPersona = new ControladorPersona();
         this.controladorComida = new ControladorComida();
         this.controladorRol = new ControladorRol();
         this.controladorUsuario = new ControladorUsuario();
+        this.controladorCategoria = new ControladorCategoria();
+        this.controladorMenu = new ControladorMenu();
     }
     
     public String procesarComando(String subject) {
@@ -42,6 +46,26 @@ public class ProcesadorComandos {
                 return controladorUsuario.editarUsuario(subject);
             case "ELIUSU":
                 return controladorUsuario.eliminarUsuario(subject);
+            //
+            // CATEGORIA
+            case "LISCAT":
+                return controladorCategoria.listarCategorias();
+            case "INSCAT":
+                return controladorCategoria.insertarCategoria(subject);
+            case "EDICAT":
+                return controladorCategoria.editarCategoria(subject);
+            case "ELICAT":
+                return controladorCategoria.eliminarCategoria(subject);
+            //    
+            // MENU
+            case "LISMEN":
+                return controladorMenu.listarMenus();
+            case "INSMEN":
+                return controladorMenu.insertarMenu(subject);
+            case "EDIMEN":
+                return controladorMenu.editarMenu(subject);
+            case "ELIMEN":
+                return controladorMenu.eliminarMenu(subject);
             
             //
             case "LISPER":

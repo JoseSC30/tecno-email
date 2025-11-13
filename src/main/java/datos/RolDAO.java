@@ -63,7 +63,7 @@ public class RolDAO {
     }
     
     public void eliminarRol(int id) {
-        String sql = "DELETE FROM pr_persona WHERE id=?";
+        String sql = "DELETE FROM roles WHERE rol_id=?";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
