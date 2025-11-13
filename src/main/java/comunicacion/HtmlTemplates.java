@@ -1,5 +1,5 @@
 package comunicacion;
-
+//
 import java.util.List;
 
 public class HtmlTemplates {
@@ -90,6 +90,58 @@ public class HtmlTemplates {
         return html.toString();
     }
     
+    public static String mensajeCortoHtml(String mensaje) {
+    // Elimina el prefijo " C : " o "C :" para dejar solo el texto limpio
+    String textoLimpio = mensaje.replaceFirst("^\\s*C\\s*:\\s*", "").trim();
+
+    return String.format("""
+        <html>
+        <head>
+            <meta charset='UTF-8'>
+            <style>
+                body {
+                    font-family: 'Segoe UI', Arial, sans-serif;
+                    background-color: #f8fafc;
+                    color: #333;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100vh;
+                    margin: 0;
+                }
+                .card {
+                    background: white;
+                    padding: 30px 40px;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                    text-align: center;
+                    max-width: 500px;
+                }
+                h2 {
+                    color: #1a73e8;
+                    margin-bottom: 10px;
+                }
+                p {
+                    font-size: 18px;
+                    margin: 0;
+                }
+                .success {
+                    color: #2e7d32;
+                    font-weight: bold;
+                }
+            </style>
+        </head>
+        <body>
+            <div class='card'>
+                <h2>✅ Operación Exitosa</h2>
+                <p class='success'>%s</p>
+            </div>
+        </body>
+        </html>
+        """, textoLimpio);
+}
+    
     public static String comandosAyuda() {
     return """
         <html>
@@ -169,6 +221,24 @@ public class HtmlTemplates {
                 <tr><td>Editar Rol</td><td><code>EDIROL["id","nombre"]</code></td></tr>
                 <tr><td>Eliminar Rol</td><td><code>ELIROL["id"]</code></td></tr>
             </table>
+           
+           <h2>🧩 Gestión de Categorias</h2>
+                       <table>
+                           <tr><th>Acción</th><th>Comando</th></tr>
+                           <tr><td>Listar Roles</td><td><code>LISCAT</code></td></tr>
+                           <tr><td>Insertar Rol</td><td><code>INSCAT["nombre"]</code></td></tr>
+                           <tr><td>Editar Rol</td><td><code>EDICAT["id","nombre"]</code></td></tr>
+                           <tr><td>Eliminar Rol</td><td><code>ELICAT["id"]</code></td></tr>
+                       </table>
+           
+           <h2>🧩 Gestión de Menus</h2>
+                       <table>
+                           <tr><th>Acción</th><th>Comando</th></tr>
+                           <tr><td>Listar Roles</td><td><code>LISMEN</code></td></tr>
+                           <tr><td>Insertar Rol</td><td><code>INSMEN["nombre","tipo","Fecha Inicio","Fecha Fin"]</code></td></tr>
+                           <tr><td>Editar Rol</td><td><code>EDIMEN["id","nombre","tipo","Fecha Inicio","Fecha Fin"]</code></td></tr>
+                           <tr><td>Eliminar Rol</td><td><code>ELIMEN["id"]</code></td></tr>
+                       </table>
 
             <div class='footer'>
                 © Sistema de Gestión Automatizada - Todos los derechos reservados
@@ -177,4 +247,6 @@ public class HtmlTemplates {
         </html>
     """;
 }
+    
+    
 }

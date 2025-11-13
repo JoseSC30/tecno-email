@@ -167,13 +167,14 @@ public class ClientePOP {
             String html;
             if ("comandos".equals(resultado)) {
                 html = HtmlTemplates.comandosAyuda();
+            } else if (resultado.trim().startsWith("C :") || resultado.trim().startsWith("C:")) {
+                html = HtmlTemplates.mensajeCortoHtml(resultado);
             } else {
                 html = HtmlTemplates.resultadoToHtml(resultado);
             }
             
             emailService.sendHtmlEmail(
                     props.getProperty("mail.user"),
-                    //"joseluis.universidad2020@gmail.com",
                     from,
                     "RESULTADO DE CONSULTA",
                     html
