@@ -1,0 +1,21 @@
+# NetBeans
+/nbproject/private/
+/build/
+/dist/
+/nbproject/build-impl.xml
+/nbproject/project.properties
+/nbproject/project.xml
+
+# Archivos compilados
+*.class
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+*.properties
